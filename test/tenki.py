@@ -14,7 +14,9 @@ except requests.exceptions.RequestException as e:
 else:
     weather_json = response.json()
     p = "今日の天気は" + weather_json['forecasts'][0]['telop'] + "です" # 0:今日 1:明日 2:明後日
+    s = "今日の天気は" + weather_json['forecasts'][0]['detail']['weather'] + "でしょう。"
     print(p)
+    print(s)
     f = open('tenki.txt', 'w', encoding='UTF-8')
-    f.write(p)
+    f.write(s + '\n' + p)
     f.close()
